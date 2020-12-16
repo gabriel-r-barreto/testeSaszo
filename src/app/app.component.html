@@ -1,0 +1,83 @@
+<div class="jumbotron" *ngIf="placa == false">
+
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
+        placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha</label>
+      <input type="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"
+        placeholder="Password">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Lembrar senha</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="Login()">Acessar</button>
+  </form>
+
+
+</div>
+
+
+
+<div *ngIf="placa == true" class="jumbotron">
+
+
+  <div class="row">
+    <input type="text" class="form-control" [(ngModel)]="dadosPlaca" [ngModelOptions]="{standalone: true}"
+      placeholder="Placa do carro">
+    <br><br> <br><br>
+    <button type="submit" class="btn btn-primary" (click)="getPlaca()">Pesquisar</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Chassi</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Ano Fabricação</th>
+        <th scope="col">Ano Modelo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>{{dados.brand}}</th>
+        <td>{{dados.chassis}}</td>
+        <td>{{dados.color}}</td>
+        <td>{{dados.model}}</td>
+        <td>{{dados.plate}}</td>
+        <td>{{dados.yearManufactur}}</td>
+        <td>{{dados.yearModel}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Data</th>
+        <th scope="col">Placa</th>
+        <th scope="col">ID Usuario</th>
+        <th scope="col">Email</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let rows of dadosList">
+      <tr>
+        <th>{{rows.id}}</th>
+        <td>{{rows.date}}</td>
+        <td>{{rows.plate}}</td>
+        <td>{{rows.user.id}}</td>
+        <td>{{rows.user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
